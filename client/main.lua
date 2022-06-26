@@ -50,10 +50,44 @@ RegisterNUICallback('taxi', function(data, cb)
 end)
 
 
+RegisterNetEvent('koala-cityhall:sedeli')
+AddEventHandler('koala-cityhall:sedeli', function()
+    TriggerServerEvent('koala-cityhall:delijob')
+    exports['mythic_notify']:DoHudText('error', _U('setjob') , { ['background-color'] = '#007bff', ['color'] = '#ffffff' })
+end)
+
+
+
+RegisterNUICallback('deli', function(data, cb)
+    TriggerEvent('koala-cityhall:sedeli')
+end)
+
 
 
 
 -- Draw Text --
+
+
+CreateThread(function()
+	for i=1, #Config.Zones, 1 do
+		local blip = AddBlipForCoord(Config.Zones[i])
+
+		SetBlipSprite (blip, Config.Blip.Sprite)
+		SetBlipDisplay(blip, Config.Blip.Display)
+		SetBlipScale  (blip, Config.Blip.Scale)
+		SetBlipColour (blip, Config.Blip.Colour)
+		SetBlipAsShortRange(blip, Config.Blip.ShortRange)
+
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentSubstringPlayerName(_U('blip_title'))
+		EndTextCommandSetBlipName(blip)
+	end
+end)
+
+
+
+
+
 function Draw3DText(x, y, z, text)
     local onScreen, _x, _y = World3dToScreen2d(x, y, z)
     local p = GetGameplayCamCoords()
@@ -78,7 +112,7 @@ end
     local text_distance = Config.Distance
     Citizen.CreateThread(function()
         while true do
-            Citizen.Wait(4)
+            Citizen.Wait(10)
             if isNear then
             Draw3DText(TextLocation.x, TextLocation.y, TextLocation.z, _U('open_menu'), 0.8)
                 if Vdist(GetEntityCoords(ped), Config.Location) < 1 and IsControlJustReleased(1, 38) then
@@ -108,7 +142,7 @@ end
 Citizen.CreateThread(function()
     while true do
         local coords = GetEntityCoords(ped)
-        Citizen.Wait(500)
+        Citizen.Wait(5000)
         if Vdist(coords, TextLocation) < Config.Distance then
             isNear = true
         else

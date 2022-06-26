@@ -18,10 +18,10 @@ body {
     height: 650px;
     background: linear-gradient(0deg, rgba(243,189,68,1) 0%, rgba(246,213,75,1) 100%);
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform:translateY(-50%);
     top: 50%;
     border-radius: 30px;
+    transition: all 20ms ease;
 }
 
 .footer {
@@ -34,8 +34,28 @@ body {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
+.postbtn {
+    color: rgb(0, 183, 255);
+    border-color:rgb(0, 183, 255);
+    width: 190px;
+    height: 55px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: transparent;
+    font-weight: 700;
+    border-radius: 15px;
+    border-style: solid;
+    transition: all 120ms ease;
+}
 
 .footer button {
+    position: absolute;
+    background: transparent;
+}
+
+.taxibtn {
     width: 190px;
     height: 55px;
     position: absolute;
@@ -50,6 +70,8 @@ body {
     border-color:rgba(243,189,68,1);
     transition: all 120ms ease;
 }
+
+
 
 .text {
     width: 400px;
@@ -70,6 +92,10 @@ body {
     width: 1250px;
     top: 25px;
 }
+
+
+
+
 
 .job h1, h2, h3, h4 {
     background: transparent;
@@ -110,7 +136,11 @@ body {
 }
 
 
-.footer button:hover {
+.postbtn:hover {
+    animation: pulse-animation2 2s infinite;
+  }
+
+.taxibtn:hover {
     animation: pulse-animation 2s infinite;
   }
   
@@ -123,6 +153,16 @@ body {
     }
   }
 
+  @keyframes pulse-animation2 {
+    0% {
+      box-shadow: 0 0 0 0px rgb(0, 183, 255);
+    }
+    100% {
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
+  }
+
+
 .close {
     width: 25px;
     height: 25px;
@@ -133,4 +173,48 @@ body {
     position: absolute;
     border-style: none;
     top: 7px;
+}
+
+
+.job_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#left {
+    position: absolute;
+    top: 65px;
+    left: 50px; 
+    border-style: none;
+    color: #333;
+    font-size: 17px;
+    cursor: pointer;
+
+}
+
+#right {
+    position: absolute;
+    top: 65px;
+    left: 320px; 
+    border-style: none;
+    color: #333;
+    font-size: 17px;
+    cursor: pointer;
+
+}
+
+
+
+#postnord {
+    width: 400px;
+    height: 650px;
+    background: linear-gradient(0deg, rgb(0, 217, 255) 0%, rgb(0, 183, 255) 100%);
+    position: absolute;
+    transform:translateY(-50%);
+    top: 50%;
+    border-radius: 30px;
+    transition: all 20ms ease;
 }

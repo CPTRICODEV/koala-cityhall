@@ -17,6 +17,11 @@ $(window).ready(function () {
         $.post('https://koala-cityhall/taxi', "{}");
         $.post("https://koala-cityhall/escape", "{}");
     })
+
+    $(".postbtn").click(function (event) {
+        $.post('https://koala-cityhall/deli', "{}");
+        $.post("https://koala-cityhall/escape", "{}");
+    })
     
     $(".close").click(function (data) {
         $.post("https://koala-cityhall/escape", "{}");
@@ -29,3 +34,25 @@ $(window).ready(function () {
         }
     };
 });
+
+
+function LeftArrow1() {
+    document.getElementById('postnord').style.visibility = 'hidden'
+    document.getElementById('job').style.visibility = 'visible'
+}
+
+function RightArrow1() {
+    document.getElementById('job').style.visibility = 'hidden'
+    document.getElementById('postnord').style.visibility = 'visible'
+}
+
+
+function LeftArrow2() {
+    document.getElementById('postnord').style.visibility = 'hidden'
+    document.getElementById('job').style.visibility = 'visible'
+}
+
+function RightArrow2() {
+    document.getElementById('job').style.visibility = 'hidden'
+    document.getElementById('postnord').style.visibility = 'visible'
+}
