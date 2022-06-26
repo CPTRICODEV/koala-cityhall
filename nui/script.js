@@ -14,9 +14,10 @@ $(window).ready(function () {
     $("#container").hide();
 
     $(".taxibtn").click(function (event) {
-        $.post('http://koala-cityhall/taxi', "{}");
+        $.post('https://koala-cityhall/taxi', "{}");
+        $.post("https://koala-cityhall/escape", "{}");
     })
-
+    
     $(".close").click(function (data) {
         $.post("https://koala-cityhall/escape", "{}");
     })

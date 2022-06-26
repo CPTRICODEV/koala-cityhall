@@ -37,15 +37,19 @@ AddEventHandler('esx:setJob',function(job)
     PlayerData.job = Job
 end)
 
-
-RegisterNetEvent('koala-cityhall:setjobtaxi')
-AddEventHandler('koala-cityhall:setjobtaxi', function()
-    TriggerServerEvent('koala-cityhall:setplayerjobtaxi')
+RegisterNetEvent('koala-cityhall:settaxi')
+AddEventHandler('koala-cityhall:settaxi', function()
+    TriggerServerEvent('koala-cityhall:taxijob')
+    exports['mythic_notify']:DoHudText('error', _U('setjob') , { ['background-color'] = '#007bff', ['color'] = '#ffffff' })
 end)
+
+
 
 RegisterNUICallback('taxi', function(data, cb)
-    TriggerEvent('koala-cityhall:setjobtaxi')
+    TriggerEvent('koala-cityhall:settaxi')
 end)
+
+
 
 
 
@@ -78,14 +82,7 @@ end
             if isNear then
             Draw3DText(TextLocation.x, TextLocation.y, TextLocation.z, _U('open_menu'), 0.8)
                 if Vdist(GetEntityCoords(ped), Config.Location) < 1 and IsControlJustReleased(1, 38) then
-                    if ESX.PlayerData.job.name == "police" then
-                        exports['mythic_notify']:DoHudText('error', _U('police_warning'), { ['background-color'] = '#007bff', ['color'] = '#ffffff' })
-                    else
-                        RequestAnimDict("mp_fbi_heist")
-                        while (not HasAnimDictLoaded("mp_fbi_heist")) do Citizen.Wait(0) end
-                        TaskPlayAnim(ped,"mp_fbi_heist", "loop" , 1.0,-1.0, 5000, 0, 1, true, true, true)
-                        exports['progressBars']:startUI(4000, _U('pc'))
-                        Citizen.Wait(4000)
+                        Citizen.Wait(20)
                         menuIsShowed        = true
     
                         SendNUIMessage({
@@ -100,7 +97,6 @@ end
                     end
                 end 
             end
-        end
     end)
 
 

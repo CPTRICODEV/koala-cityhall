@@ -9,6 +9,7 @@ body {
     color: white;
     background: transparent;
     font-family: 'Poppins', sans-serif;
+    
 }
 
 
@@ -121,3 +122,15 @@ body {
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
     }
   }
+
+.close {
+    width: 25px;
+    height: 25px;
+    color: red;
+    background: transparent;
+    left: 363px;
+    font-size: 20px;
+    position: absolute;
+    border-style: none;
+    top: 7px;
+}
