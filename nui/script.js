@@ -13,10 +13,13 @@ $(window).ready(function () {
 
     $("#container").hide();
 
-    $(".taxi").click(function (event) {
-        $.post('http://koala-cityhall/taxi', {});
+    $(".taxibtn").click(function (event) {
+        $.post('http://koala-cityhall/taxi', "{}");
     })
 
+    $(".close").click(function (data) {
+        $.post("https://koala-cityhall/escape", "{}");
+    })
 
 
     document.onkeyup = function (data) {
