@@ -90,6 +90,21 @@ end)
 
 
 
+Citizen.CreateThread(function()
+    while true do
+        local coords = GetEntityCoords(ped)
+        Citizen.Wait(1)
+        if Vdist(coords, TextLocation) < Config.Distance then
+            isNear = true
+        else
+            isNear = false
+        end
+    end
+end)
+
+
+
+
 -- Draw Text --
 
 
@@ -135,27 +150,30 @@ end
 
 
     local text_distance = Config.Distance
-    Citizen.CreateThread(function()
-        while true do
-            Citizen.Wait(10)
-            if isNear then
-            Draw3DText(TextLocation.x, TextLocation.y, TextLocation.z, _U('open_menu'), 0.8)
+
+    CreateThread(function()
+        local coords = Config.Location
+        while true do 
+            local pos = GetEntityCoords(ped)
+            if #(pos - coords) <= 5 then
+                Draw3DText(TextLocation.x, TextLocation.y, TextLocation.z, _U('open_menu'), 0.8)
                 if Vdist(GetEntityCoords(ped), Config.Location) < 1 and IsControlJustReleased(1, 38) then
-                        Citizen.Wait(20)
-                        menuIsShowed        = true
-    
-                        SendNUIMessage({
-                            showMenu = true,
-                        })
-    
-                        SetNuiFocus(true, true)
-    
-                        if menuIsShowed then
-                            ESX.HideUI()
-                        end
+                    Citizen.Wait(20)
+                    menuIsShowed        = true
+
+                    SendNUIMessage({
+                        showMenu = true,
+                    })
+
+                    SetNuiFocus(true, true)
+
+                    if menuIsShowed then
+                        ESX.HideUI()
                     end
-                end 
+                end
             end
+            Wait(5)
+        end
     end)
 
 
@@ -164,17 +182,6 @@ end
 
 -- Open Menu --
 
-Citizen.CreateThread(function()
-    while true do
-        local coords = GetEntityCoords(ped)
-        Citizen.Wait(5000)
-        if Vdist(coords, TextLocation) < Config.Distance then
-            isNear = true
-        else
-            isNear = false
-        end
-    end
-end)
 
 
 
