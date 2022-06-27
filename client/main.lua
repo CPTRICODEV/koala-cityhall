@@ -75,6 +75,18 @@ RegisterNUICallback('trash', function(data, cb)
     TriggerEvent('koala-cityhall:settrash')
 end)
 
+RegisterNetEvent('koala-cityhall:setminer')
+AddEventHandler('koala-cityhall:setminer', function()
+    TriggerServerEvent('koala-cityhall:minerjob')
+    exports['mythic_notify']:DoHudText('error', _U('setjob') , { ['background-color'] = '#007bff', ['color'] = '#ffffff' })
+end)
+
+
+
+RegisterNUICallback('miner', function(data, cb)
+    TriggerEvent('koala-cityhall:setminer')
+end)
+
 
 
 

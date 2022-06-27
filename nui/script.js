@@ -27,6 +27,11 @@ $(window).ready(function () {
         $.post('https://koala-cityhall/trash', "{}");
         $.post("https://koala-cityhall/escape", "{}");
     })
+
+    $(".minerbtn").click(function (event) {
+        $.post('https://koala-cityhall/miner', "{}");
+        $.post("https://koala-cityhall/escape", "{}");
+    })
     
     $(".close").click(function (data) {
         $.post("https://koala-cityhall/escape", "{}");
@@ -58,7 +63,7 @@ function LeftArrow2() {
 }
 
 function RightArrow2() {
-    document.getElementById('job').style.visibility = 'hidden'
+    document.getElementById('postnord').style.visibility = 'hidden'
     document.getElementById('trash').style.visibility = 'visible'
 }
 
@@ -68,6 +73,11 @@ function LeftArrow3() {
 }
 
 function RightArrow3() {
-    document.getElementById('job').style.visibility = 'hidden'
+    document.getElementById('trash').style.visibility = 'hidden'
+    document.getElementById('miner').style.visibility = 'visible'
+}
+
+function LeftArrow4() {
+    document.getElementById('miner').style.visibility = 'hidden'
     document.getElementById('trash').style.visibility = 'visible'
 }
