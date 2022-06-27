@@ -14,3 +14,10 @@ AddEventHandler('koala-cityhall:delijob', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.setJob('delivery', 0)
 end)
+
+
+RegisterServerEvent('koala-cityhall:trashjob')
+AddEventHandler('koala-cityhall:trashjob', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.setJob('garbage', 0)
+end)

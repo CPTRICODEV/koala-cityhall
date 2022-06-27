@@ -63,6 +63,19 @@ RegisterNUICallback('deli', function(data, cb)
 end)
 
 
+RegisterNetEvent('koala-cityhall:settrash')
+AddEventHandler('koala-cityhall:settrash', function()
+    TriggerServerEvent('koala-cityhall:trashjob')
+    exports['mythic_notify']:DoHudText('error', _U('setjob') , { ['background-color'] = '#007bff', ['color'] = '#ffffff' })
+end)
+
+
+
+RegisterNUICallback('trash', function(data, cb)
+    TriggerEvent('koala-cityhall:settrash')
+end)
+
+
 
 
 -- Draw Text --
@@ -73,7 +86,7 @@ CreateThread(function()
 		local blip = AddBlipForCoord(Config.Zones[i])
 
 		SetBlipSprite (blip, Config.Blip.Sprite)
-		SetBlipDisplay(blip, Config.Blip.Display)
+		SetBlipDisplay(blip, Config.Blip.Display)  
 		SetBlipScale  (blip, Config.Blip.Scale)
 		SetBlipColour (blip, Config.Blip.Colour)
 		SetBlipAsShortRange(blip, Config.Blip.ShortRange)
